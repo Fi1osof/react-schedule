@@ -21,7 +21,7 @@ import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
 import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
 
 import moment from 'moment';
-// import locale from 'moment/src/locale/ru';
+import locale from 'moment/src/locale/ru';
 
 // if(typeof window !== "undefined"){
 // 	window.moment = moment;
