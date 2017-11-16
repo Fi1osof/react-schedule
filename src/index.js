@@ -156,9 +156,18 @@ export class ReactSchedule extends Component{
 
 			// console.log("event index", index);
 
-			// console.log("event days", days);
+			// console.log("event days", day, days);
 
-			days[day] = null;
+			const index = days.findIndex(n => n && n.start && n.start.weekDay === day);
+
+			if(index !== -1){
+
+				days[index] = null;
+
+			}
+
+
+			// console.log("event days", day, days);
 
 			// this.setState({
 			// 	days,
