@@ -18,7 +18,7 @@ messages = messages({
 import HTML5Backend from 'react-dnd-html5-backend'
 import { DragDropContext } from 'react-dnd'
 import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
-import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
+// import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
 
 import moment from 'moment';
 import locale from 'moment/src/locale/ru';
