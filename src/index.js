@@ -114,11 +114,11 @@ export class ReactSchedule extends Component{
 		super(props);
 
 		const {
-			days,
+			// days,
 		} = props;
 
 		this.state = {
-			days,
+			// days,
 			currentDate: moment(),
 		};
 	}
@@ -133,9 +133,13 @@ export class ReactSchedule extends Component{
 			// console.log("onSelect b", b);
 			// console.log("onSelect c", c);
 
+			// let {
+			// 	days,
+			// } = this.state;
+
 			let {
 				days,
-			} = this.state;
+			} = this.props;
 
 			const {
 				start,
@@ -181,9 +185,13 @@ export class ReactSchedule extends Component{
 			action,
 		} = slotInfo;
 
+		// let {
+		// 	days,
+		// } = this.state;
+
 		let {
 			days,
-		} = this.state;
+		} = this.props;
 
 		start = moment(start);
 		end = moment(end);
@@ -370,9 +378,9 @@ export class ReactSchedule extends Component{
 
 		onChange && onChange(days);
 
-		this.setState({
-			days,
-		});
+		// this.setState({
+		// 	days,
+		// });
 	}
 
   
@@ -411,13 +419,13 @@ export class ReactSchedule extends Component{
 	render(){
 
 		const {
+			days,
 			...other
 		} = this.props;
 
 
 		const {
 			// events,
-			days,
 			currentDate,
 		} = this.state;
 
@@ -498,37 +506,30 @@ export class ReactSchedule extends Component{
 	 //  });
 
 
-		return <div
-			style={{
-				height: "100vh",
-				// overflow: 'auto',
-			}}
-		>
-      <DragAndDropCalendar
-        selectable
-        toolbar={false}
-        events={events}
-        views={allViews}
-        defaultView="week"
-        // view="month"
-        step={30}
-        defaultDate={currentDate}
-        culture={'ru'}
-        onSelectEvent={::this.onSelect}
-        onSelectSlot={::this.onSelectSlot}
-        onEventDrop={::this.moveEvent}
-        // allDayAccessor="Весь день"
-        messages={messages}
-        showMultiDayTimes={true}
-        // onDrillDown={() => {
-        // 	console.log("onDrillDown");
-        // }}
-        formats={{
-        	dayFormat: "dddd",
-        }}
-        {...other}
-      />
-		</div>
+		return <DragAndDropCalendar
+      selectable
+      toolbar={false}
+      events={events}
+      views={allViews}
+      defaultView="week"
+      // view="month"
+      step={30}
+      defaultDate={currentDate}
+      culture={'ru'}
+      onSelectEvent={::this.onSelect}
+      onSelectSlot={::this.onSelectSlot}
+      onEventDrop={::this.moveEvent}
+      // allDayAccessor="Весь день"
+      messages={messages}
+      showMultiDayTimes={true}
+      // onDrillDown={() => {
+      // 	console.log("onDrillDown");
+      // }}
+      formats={{
+      	dayFormat: "dddd",
+      }}
+      {...other}
+    />
 	}
 }
 
