@@ -78,9 +78,9 @@ export const toDate = function(array, toArray){
 		weekDay,
 	} = array;
 
-	let date = moment();
+	let date = moment().startOf('week');
 
-	date.set("day", weekDay + 1);
+	date.add("day", weekDay);
 	date.set("hour", hour);
 	date.set("minute", minute);
 	date.set("second", second);
