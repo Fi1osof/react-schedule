@@ -1,11 +1,30 @@
 
-import './styles/styles.less';
+// import styles from './styles/styles.less';
+// import styles2 from 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
+// import styles from './styles/styles.css';
+// import styles2 from 'react-big-calendar/lib/css/react-big-calendar.css';
 
 import React, { Component } from 'react';
 
 import PropTypes from 'prop-types';
 
 import BigCalendar from 'react-big-calendar';
+
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
+// import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
+
+import moment from 'moment';
+// import locale from 'moment/src/locale/ru';
+
+if(typeof window !== "undefined"){
+	window.moment = moment;
+}
+
+
+// console.log('styles', styles);
+// console.log('styles2', styles2);
 
 let {
 	default: messages,
@@ -14,19 +33,6 @@ let {
 messages = messages({
 	allDay: "Весь день",
 });
-
-import HTML5Backend from 'react-dnd-html5-backend'
-import { DragDropContext } from 'react-dnd'
-import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop';
-// import 'react-big-calendar/lib/addons/dragAndDrop/styles.less';
-
-import moment from 'moment';
-import locale from 'moment/src/locale/ru';
-
-if(typeof window !== "undefined"){
-	window.moment = moment;
-}
-
 // console.log('messages', messages);
 
 
@@ -124,7 +130,7 @@ export class ReactSchedule extends Component{
 	}
 
 
-	onSelect(event,b,c){
+	onSelect(event){
 
 
 		if(window.confirm("Удалить этот элемент?")){
@@ -525,9 +531,9 @@ export class ReactSchedule extends Component{
       step={30}
       defaultDate={currentDate}
       culture={'ru'}
-      onSelectEvent={::this.onSelect}
-      onSelectSlot={::this.onSelectSlot}
-      onEventDrop={::this.moveEvent}
+      onSelectEvent={event => this.onSelect(event)}
+      onSelectSlot={slotInfo => this.onSelectSlot(slotInfo)}
+      onEventDrop={event => this.moveEvent(event)}
       // allDayAccessor="Весь день"
       messages={messages}
       showMultiDayTimes={true}

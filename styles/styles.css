@@ -1,0 +1,11 @@
+
+@import '~react-big-calendar/lib/css/react-big-calendar.css';
+
+.rbc-time-column .rbc-timeslot-group{
+	min-height: auto;
+}
+
+.rbc-time-view{
+	height: 550px;
+	flex: none;
+}
